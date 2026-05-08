@@ -175,6 +175,7 @@ function renderLocationGuide() {
 
   container.append(
     createGuideCard("내비게이션", data.venue.navigation || []),
+    createGuideCard("주차", data.venue.parkingLots || []),
     createGuideCard("지하철", data.venue.subway || []),
     createGuideCard("버스", [
       data.venue.busStops,
@@ -182,7 +183,6 @@ function renderLocationGuide() {
         (bus) => `${bus.label}: ${bus.routes}`,
       ),
     ]),
-    createGuideCard("주차", data.venue.parkingLots || []),
   );
 }
 

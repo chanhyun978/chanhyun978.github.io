@@ -278,14 +278,7 @@ function setupPager() {
     return button;
   });
 
-  const nextButton = document.createElement("button");
-  nextButton.className = "next-page";
-  nextButton.type = "button";
-  nextButton.addEventListener("click", () => {
-    setActive(activeIndex === sections.length - 1 ? 0 : activeIndex + 1);
-  });
-
-  shell.append(dots, nextButton);
+  shell.append(dots);
 
   function canMoveFromCurrent(direction) {
     const current = sections[activeIndex];
@@ -314,9 +307,6 @@ function setupPager() {
       button.setAttribute("aria-current", isActive ? "page" : "false");
     });
 
-    const isLast = activeIndex === sections.length - 1;
-    nextButton.textContent = isLast ? "처음으로" : "다음";
-    nextButton.classList.toggle("is-last", isLast);
   }
 
   function move(direction) {

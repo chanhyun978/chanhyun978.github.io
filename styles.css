@@ -68,7 +68,7 @@ html.js-enabled .page-shell {
   justify-content: center;
   width: 100%;
   min-height: var(--app-height);
-  padding: 72px 26px 92px;
+  padding: 72px 26px;
   text-align: center;
 }
 
@@ -136,7 +136,18 @@ h1,
 h2,
 h3,
 p {
-  overflow-wrap: anywhere;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+blockquote,
+address,
+.button,
+.text-link {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 h1 {
@@ -605,43 +616,6 @@ address {
   border-color: var(--rose-deep);
 }
 
-.next-page {
-  position: absolute;
-  z-index: 10;
-  left: 50%;
-  bottom: calc(18px + env(safe-area-inset-bottom));
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 96px;
-  min-height: 42px;
-  padding: 0 18px;
-  color: #fff;
-  background: rgba(52, 47, 45, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 999px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 12px 30px rgba(55, 36, 32, 0.18);
-  cursor: pointer;
-  font-size: 0.86rem;
-  font-weight: 700;
-  transform: translateX(-50%);
-}
-
-.next-page::after {
-  content: "";
-  width: 7px;
-  height: 7px;
-  margin-left: 8px;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-}
-
-.next-page.is-last::after {
-  transform: translateY(2px) rotate(-135deg);
-}
-
 @media (min-width: 481px) {
   body {
     display: grid;
@@ -660,7 +634,6 @@ address {
 @media (max-width: 360px) {
   .section {
     padding-inline: 20px;
-    padding-bottom: 82px;
   }
 
   .countdown {

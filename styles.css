@@ -73,6 +73,10 @@ html.js-enabled .page-shell {
   text-align: center;
 }
 
+.section > * {
+  flex-shrink: 0;
+}
+
 html.js-enabled .section {
   position: absolute;
   inset: 0;
@@ -487,9 +491,11 @@ address {
 }
 
 .venue-map {
+  flex: 0 0 auto;
   margin: 22px 0 0;
   overflow: hidden;
-  background: #fff;
+  aspect-ratio: 750 / 488;
+  background: #fff url("assets/map-inner.jpg") center / contain no-repeat;
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: 0 14px 36px rgba(21, 45, 58, 0.08);
@@ -499,6 +505,8 @@ address {
   display: block;
   width: 100%;
   height: auto;
+  aspect-ratio: 750 / 488;
+  object-fit: contain;
 }
 
 .location-guide {

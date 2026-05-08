@@ -18,7 +18,7 @@ window.INVITATION_DATA = {
   date: {
     iso: "2026-10-31T12:00:00+09:00",
     display: "2026년 10월 31일 토요일 낮 12시",
-    calendarTitle: "이찬현, 김한비의 결혼식",
+    calendarTitle: "이찬현 그리고 김한비의 결혼식",
   },
   venue: {
     name: "KU컨벤션웨딩홀",
@@ -37,7 +37,7 @@ window.INVITATION_DATA = {
     heroEyebrow: "Wedding Invitation",
     heroTitle: "저희 결혼합니다",
     greeting:
-      "서로의 계절이 되어준 두 사람이 이제 한 길을 함께 걸어가려 합니다. 귀한 걸음으로 축복해 주시면 더없는 기쁨으로 간직하겠습니다.",
+      "학생때부터 직장까지 함께하며 서로의 버팀목이 되어준 두 사람이 이제 한 길을 함께 걸어가려 합니다. 귀한 걸음으로 축복해 주시면 더없는 기쁨으로 간직하겠습니다.",
     quote: "같은 곳을 바라보며, 매일을 따뜻하게 쌓아가겠습니다.",
     parentsIntro: "양가 부모님께서 소중한 분들을 정중히 초대합니다.",
     accountIntro: "축하의 마음을 전해주실 분들을 위해 계좌번호를 안내드립니다.",
@@ -46,19 +46,19 @@ window.INVITATION_DATA = {
   gallery: [
     {
       src: "assets/gallery-1.jpg",
-      alt: "신랑 신부 웨딩 사진 1",
+      alt: "신랑 신부 사진 1",
     },
     {
       src: "assets/gallery-2.jpg",
-      alt: "신랑 신부 웨딩 사진 2",
+      alt: "신랑 신부 사진 2",
     },
     {
       src: "assets/gallery-3.jpg",
-      alt: "신랑 신부 웨딩 사진 3",
+      alt: "신랑 신부 사진 3",
     },
     {
       src: "assets/gallery-4.jpg",
-      alt: "신랑 신부 웨딩 사진 4",
+      alt: "신랑 신부 사진 4",
     },
   ],
   cover: {
@@ -88,7 +88,7 @@ window.INVITATION_DATA = {
       "https://www.google.com/maps/search/?api=1&query=KU%EC%BB%A8%EB%B2%A4%EC%85%98%EC%9B%A8%EB%94%A9%ED%99%80%20%EC%84%9C%EC%9A%B8%20%EA%B4%91%EC%A7%84%EA%B5%AC%20%EC%95%84%EC%B0%A8%EC%82%B0%EB%A1%9C36%EA%B8%B8%205",
   },
   share: {
-    title: "찬현 그리고 한비의 결혼식에 초대합니다",
+    title: "이찬현 그리고 김한비의 결혼식에 초대합니다",
     text: "2026년 10월 31일 토요일 낮 12시, KU컨벤션웨딩홀에서 함께 축복해 주세요.",
     url: "",
   },

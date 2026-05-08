@@ -184,7 +184,7 @@ address,
 
 h1 {
   margin: 0;
-  font-size: 3.05rem;
+  font-size: clamp(2rem, 5.9dvh, 3.8rem);
   font-weight: 700;
   line-height: 1.08;
 }
@@ -319,12 +319,14 @@ html.js-enabled .hero {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: calc(54px + env(safe-area-inset-top)) 28px 0;
+  padding: calc(clamp(22px, 6.4dvh, 54px) + env(safe-area-inset-top)) 28px 0;
   text-shadow: 0 1px 18px rgba(255, 255, 255, 0.72);
 }
 
 .hero .eyebrow {
   color: var(--leaf);
+  margin-bottom: clamp(8px, 1.6dvh, 14px);
+  font-size: clamp(0.66rem, 1.35dvh, 0.72rem);
 }
 
 .couple-names {
@@ -332,10 +334,10 @@ html.js-enabled .hero {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 24px;
+  gap: clamp(7px, 1.4dvh, 10px);
+  margin-top: clamp(12px, 2.7dvh, 24px);
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: clamp(0.86rem, 2.05dvh, 1.2rem);
 }
 
 .name-divider {
@@ -345,9 +347,9 @@ html.js-enabled .hero {
 }
 
 .hero-date {
-  margin-top: 14px;
+  margin-top: clamp(8px, 1.7dvh, 14px);
   color: rgba(23, 36, 45, 0.74);
-  font-size: 0.94rem;
+  font-size: clamp(0.72rem, 1.6dvh, 0.94rem);
 }
 
 .intro-section {
@@ -753,10 +755,6 @@ address {
   .page-shell {
     border-radius: 18px;
   }
-
-  h1 {
-    font-size: 3.8rem;
-  }
 }
 
 @media (max-width: 360px) {
@@ -771,11 +769,6 @@ address {
   .countdown strong {
     font-size: 1.7rem;
   }
-
-  h1 {
-    font-size: 2.75rem;
-  }
-
   .button {
     width: 100%;
   }

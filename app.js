@@ -2,6 +2,8 @@ const data = window.INVITATION_DATA || {};
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
 document.documentElement.classList.add("js-enabled");
+const isKakaoBrowser = /KAKAOTALK/i.test(navigator.userAgent);
+document.documentElement.classList.toggle("kakao-browser", isKakaoBrowser);
 
 function setText(selector, value) {
   const element = $(selector);
@@ -309,6 +311,10 @@ function bindActions() {
 function setAppHeight() {
   const height = window.visualViewport?.height || window.innerHeight;
   document.documentElement.style.setProperty("--app-height", `${height}px`);
+  document.documentElement.style.setProperty(
+    "--browser-bottom-offset",
+    isKakaoBrowser ? "56px" : "0px",
+  );
 }
 
 function setupPager() {
@@ -450,3 +456,9 @@ function init() {
 document.addEventListener("DOMContentLoaded", init);
 window.addEventListener("resize", setAppHeight);
 window.visualViewport?.addEventListener("resize", setAppHeight);
+window.addEventListener("load", () => {
+  setAppHeight();
+  window.setTimeout(setAppHeight, 350);
+  window.setTimeout(setAppHeight, 1200);
+});
+document.addEventListener("visibilitychange", setAppHeight);

@@ -10,6 +10,7 @@
   --gold: #b9905d;
   --shadow: 0 24px 72px rgba(21, 45, 58, 0.2);
   --app-height: 100svh;
+  --browser-bottom-offset: 0px;
 }
 
 * {
@@ -58,7 +59,7 @@ button {
 }
 
 html.js-enabled .page-shell {
-  height: var(--app-height);
+  height: calc(var(--app-height) - var(--browser-bottom-offset));
   touch-action: pan-y;
 }
 
@@ -73,6 +74,10 @@ html.js-enabled .page-shell {
   text-align: center;
 }
 
+html.kakao-browser .section {
+  padding-bottom: 112px;
+}
+
 .section > * {
   flex-shrink: 0;
 }
@@ -80,7 +85,7 @@ html.js-enabled .page-shell {
 html.js-enabled .section {
   position: absolute;
   inset: 0;
-  height: var(--app-height);
+  height: calc(var(--app-height) - var(--browser-bottom-offset));
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -189,7 +194,7 @@ p {
 }
 
 html.js-enabled .hero {
-  height: var(--app-height);
+  height: calc(var(--app-height) - var(--browser-bottom-offset));
 }
 
 .hero-media {

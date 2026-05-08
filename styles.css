@@ -9,6 +9,7 @@
   --leaf: #718066;
   --gold: #b49667;
   --shadow: 0 24px 70px rgba(75, 50, 42, 0.14);
+  --app-height: 100svh;
 }
 
 * {
@@ -17,16 +18,24 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
   margin: 0;
+  min-height: 100%;
   color: var(--ink);
   background:
     radial-gradient(circle at top left, rgba(189, 126, 122, 0.16), transparent 34rem),
     linear-gradient(180deg, #f8eee9 0%, var(--bg) 22rem, #f8f4ef 100%);
   font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
+}
+
+html.js-enabled,
+html.js-enabled body {
+  height: 100%;
+  overflow: hidden;
 }
 
 button,
@@ -39,6 +48,7 @@ button {
 }
 
 .page-shell {
+  position: relative;
   width: min(100%, 480px);
   margin: 0 auto;
   background: rgba(255, 253, 251, 0.78);
@@ -46,10 +56,47 @@ button {
   overflow: hidden;
 }
 
+html.js-enabled .page-shell {
+  height: var(--app-height);
+  touch-action: pan-y;
+}
+
 .section {
   position: relative;
-  padding: 72px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: var(--app-height);
+  padding: 72px 26px 92px;
   text-align: center;
+}
+
+html.js-enabled .section {
+  position: absolute;
+  inset: 0;
+  height: var(--app-height);
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(24px) scale(0.985);
+  transition:
+    opacity 420ms ease,
+    transform 520ms cubic-bezier(0.2, 0.84, 0.28, 1);
+}
+
+html.js-enabled .section.is-active {
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+html.js-enabled .section.is-before {
+  transform: translateY(-22px) scale(0.985);
 }
 
 .section + .section::before {
@@ -61,6 +108,10 @@ button {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--line), transparent);
   transform: translateX(-50%);
+}
+
+html.js-enabled .section + .section::before {
+  display: none;
 }
 
 .section-kicker,
@@ -113,12 +164,16 @@ p {
 }
 
 .hero {
-  min-height: 92svh;
+  min-height: var(--app-height);
   display: grid;
   align-content: end;
   padding: 0;
   color: #fff;
   background: #2d2927;
+}
+
+html.js-enabled .hero {
+  height: var(--app-height);
 }
 
 .hero-media {
@@ -385,6 +440,12 @@ blockquote {
   background: var(--paper);
 }
 
+html.js-enabled .venue-section,
+html.js-enabled .gallery-section,
+html.js-enabled .account-section {
+  justify-content: flex-start;
+}
+
 address {
   display: grid;
   gap: 4px;
@@ -518,9 +579,73 @@ address {
   font-weight: 700;
 }
 
+.page-dots {
+  position: absolute;
+  z-index: 9;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  gap: 9px;
+  transform: translateY(-50%);
+}
+
+.page-dots button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid rgba(144, 88, 83, 0.42);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  cursor: pointer;
+}
+
+.page-dots button.is-active {
+  height: 24px;
+  background: var(--rose-deep);
+  border-color: var(--rose-deep);
+}
+
+.next-page {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 96px;
+  min-height: 42px;
+  padding: 0 18px;
+  color: #fff;
+  background: rgba(52, 47, 45, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(55, 36, 32, 0.18);
+  cursor: pointer;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transform: translateX(-50%);
+}
+
+.next-page::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+.next-page.is-last::after {
+  transform: translateY(2px) rotate(-135deg);
+}
+
 @media (min-width: 481px) {
   body {
-    padding: 24px 0;
+    display: grid;
+    place-items: center;
   }
 
   .page-shell {
@@ -535,6 +660,7 @@ address {
 @media (max-width: 360px) {
   .section {
     padding-inline: 20px;
+    padding-bottom: 82px;
   }
 
   .countdown {
@@ -555,6 +681,10 @@ address {
 
   .account-card {
     grid-template-columns: 1fr;
+  }
+
+  .page-dots {
+    right: 8px;
   }
 }
 

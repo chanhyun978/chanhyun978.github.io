@@ -1,6 +1,7 @@
 const data = window.INVITATION_DATA || {};
 
 const $ = (selector, scope = document) => scope.querySelector(selector);
+document.documentElement.classList.add("js-enabled");
 
 function setText(selector, value) {
   const element = $(selector);
@@ -248,7 +249,144 @@ function bindActions() {
   });
 }
 
+function setAppHeight() {
+  const height = window.visualViewport?.height || window.innerHeight;
+  document.documentElement.style.setProperty("--app-height", `${height}px`);
+}
+
+function setupPager() {
+  const shell = $(".page-shell");
+  const sections = Array.from(document.querySelectorAll(".section"));
+  if (!shell || sections.length === 0) return;
+
+  let activeIndex = 0;
+  let wheelLocked = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  const dots = document.createElement("nav");
+  dots.className = "page-dots";
+  dots.setAttribute("aria-label", "청첩장 페이지");
+
+  const dotButtons = sections.map((section, index) => {
+    const label = section.querySelector("h1, h2")?.textContent || `페이지 ${index + 1}`;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.setAttribute("aria-label", label);
+    button.addEventListener("click", () => setActive(index));
+    dots.append(button);
+    return button;
+  });
+
+  const nextButton = document.createElement("button");
+  nextButton.className = "next-page";
+  nextButton.type = "button";
+  nextButton.addEventListener("click", () => {
+    setActive(activeIndex === sections.length - 1 ? 0 : activeIndex + 1);
+  });
+
+  shell.append(dots, nextButton);
+
+  function canMoveFromCurrent(direction) {
+    const current = sections[activeIndex];
+    const maxScrollTop = current.scrollHeight - current.clientHeight;
+    if (maxScrollTop <= 4) return true;
+    if (direction > 0) return current.scrollTop >= maxScrollTop - 4;
+    return current.scrollTop <= 4;
+  }
+
+  function setActive(index) {
+    activeIndex = Math.max(0, Math.min(index, sections.length - 1));
+
+    sections.forEach((section, sectionIndex) => {
+      const isActive = sectionIndex === activeIndex;
+      section.classList.toggle("is-active", isActive);
+      section.classList.toggle("is-before", sectionIndex < activeIndex);
+      section.setAttribute("aria-hidden", String(!isActive));
+      if (isActive) {
+        section.scrollTop = 0;
+      }
+    });
+
+    dotButtons.forEach((button, buttonIndex) => {
+      const isActive = buttonIndex === activeIndex;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-current", isActive ? "page" : "false");
+    });
+
+    const isLast = activeIndex === sections.length - 1;
+    nextButton.textContent = isLast ? "처음으로" : "다음";
+    nextButton.classList.toggle("is-last", isLast);
+  }
+
+  function move(direction) {
+    if (!canMoveFromCurrent(direction)) return;
+    const target = activeIndex + direction;
+    if (target < 0 || target >= sections.length) return;
+    setActive(target);
+  }
+
+  shell.addEventListener(
+    "wheel",
+    (event) => {
+      if (Math.abs(event.deltaY) < 18) return;
+      const direction = event.deltaY > 0 ? 1 : -1;
+      if (!canMoveFromCurrent(direction)) return;
+      event.preventDefault();
+      if (wheelLocked) return;
+      wheelLocked = true;
+      move(direction);
+      window.setTimeout(() => {
+        wheelLocked = false;
+      }, 620);
+    },
+    { passive: false },
+  );
+
+  shell.addEventListener(
+    "touchstart",
+    (event) => {
+      const touch = event.changedTouches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+    },
+    { passive: true },
+  );
+
+  shell.addEventListener(
+    "touchend",
+    (event) => {
+      const touch = event.changedTouches[0];
+      const diffX = touch.clientX - touchStartX;
+      const diffY = touch.clientY - touchStartY;
+      if (Math.abs(diffY) < 52 || Math.abs(diffY) < Math.abs(diffX)) return;
+      move(diffY < 0 ? 1 : -1);
+    },
+    { passive: true },
+  );
+
+  document.addEventListener("keydown", (event) => {
+    const activeTag = document.activeElement?.tagName;
+    const isInteractive = activeTag === "A" || activeTag === "BUTTON";
+    if (event.key === "ArrowDown" || event.key === "PageDown") {
+      event.preventDefault();
+      move(1);
+    }
+    if (event.key === "ArrowUp" || event.key === "PageUp") {
+      event.preventDefault();
+      move(-1);
+    }
+    if (event.key === " " && !isInteractive) {
+      event.preventDefault();
+      move(1);
+    }
+  });
+
+  setActive(0);
+}
+
 function init() {
+  setAppHeight();
   renderCover();
   renderBasics();
   renderCountdown();
@@ -256,7 +394,10 @@ function init() {
   renderGallery();
   renderAccounts();
   bindActions();
+  setupPager();
   window.setInterval(renderCountdown, 60000);
 }
 
 document.addEventListener("DOMContentLoaded", init);
+window.addEventListener("resize", setAppHeight);
+window.visualViewport?.addEventListener("resize", setAppHeight);

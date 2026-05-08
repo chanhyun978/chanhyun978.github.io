@@ -1,14 +1,14 @@
 :root {
-  --bg: #fbf8f5;
-  --paper: #fffdfb;
-  --ink: #342f2d;
-  --muted: #766d67;
-  --line: #eadfd8;
-  --rose: #bd7e7a;
-  --rose-deep: #905853;
-  --leaf: #718066;
-  --gold: #b49667;
-  --shadow: 0 24px 70px rgba(75, 50, 42, 0.14);
+  --bg: #eef6f9;
+  --paper: #fbfdfe;
+  --ink: #17242d;
+  --muted: #62727b;
+  --line: #d8e6ec;
+  --rose: #e17b86;
+  --rose-deep: #b95462;
+  --leaf: #247889;
+  --gold: #b9905d;
+  --shadow: 0 24px 72px rgba(21, 45, 58, 0.2);
   --app-height: 100svh;
 }
 
@@ -26,8 +26,9 @@ body {
   min-height: 100%;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(189, 126, 122, 0.16), transparent 34rem),
-    linear-gradient(180deg, #f8eee9 0%, var(--bg) 22rem, #f8f4ef 100%);
+    radial-gradient(circle at 16% 0%, rgba(74, 170, 190, 0.24), transparent 28rem),
+    radial-gradient(circle at 92% 18%, rgba(225, 123, 134, 0.18), transparent 22rem),
+    linear-gradient(180deg, #e7f4f9 0%, var(--bg) 40%, #f7f2ec 100%);
   font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.7;
 }
@@ -51,7 +52,7 @@ button {
   position: relative;
   width: min(100%, 480px);
   margin: 0 auto;
-  background: rgba(255, 253, 251, 0.78);
+  background: rgba(251, 253, 254, 0.82);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -117,7 +118,7 @@ html.js-enabled .section + .section::before {
 .section-kicker,
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--rose-deep);
+  color: var(--leaf);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
@@ -152,7 +153,7 @@ address,
 
 h1 {
   margin: 0;
-  font-size: 3.35rem;
+  font-size: 3.05rem;
   font-weight: 700;
   line-height: 1.08;
 }
@@ -177,10 +178,10 @@ p {
 .hero {
   min-height: var(--app-height);
   display: grid;
-  align-content: end;
+  align-content: start;
   padding: 0;
-  color: #fff;
-  background: #2d2927;
+  color: var(--ink);
+  background: #dcecf3;
 }
 
 html.js-enabled .hero {
@@ -198,8 +199,8 @@ html.js-enabled .hero {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(35, 29, 27, 0.08) 0%, rgba(35, 29, 27, 0.36) 42%, rgba(35, 29, 27, 0.78) 100%),
-    radial-gradient(circle at 50% 15%, transparent 0 12rem, rgba(40, 30, 27, 0.18) 26rem);
+    linear-gradient(180deg, rgba(235, 248, 253, 0.9) 0%, rgba(235, 248, 253, 0.52) 24%, rgba(16, 32, 42, 0.04) 52%, rgba(9, 19, 27, 0.2) 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28), transparent 34%, rgba(13, 30, 40, 0.08));
 }
 
 .hero-media img,
@@ -213,9 +214,10 @@ html.js-enabled .hero {
 .image-fallback {
   position: relative;
   background:
-    radial-gradient(circle at 24% 18%, rgba(255, 255, 255, 0.42) 0 1rem, transparent 1.1rem),
-    radial-gradient(circle at 78% 24%, rgba(255, 220, 217, 0.42) 0 1.5rem, transparent 1.6rem),
-    linear-gradient(145deg, #d8aaa5 0%, #c98984 42%, #8a7b62 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(145deg, #cfe7f0 0%, #77afbe 48%, #1f303b 100%);
+  background-size: 46px 46px, 46px 46px, auto;
 }
 
 .image-fallback::before,
@@ -225,7 +227,7 @@ html.js-enabled .hero {
   content: "";
   position: absolute;
   border-radius: 999px 999px 999px 160px;
-  background: rgba(255, 245, 237, 0.62);
+  background: rgba(255, 255, 255, 0.42);
   transform: rotate(-24deg);
 }
 
@@ -241,7 +243,7 @@ html.js-enabled .hero {
   top: 32%;
   width: 138px;
   height: 58px;
-  background: rgba(255, 229, 225, 0.62);
+  background: rgba(225, 123, 134, 0.32);
   transform: rotate(22deg);
 }
 
@@ -250,7 +252,7 @@ html.js-enabled .hero {
   bottom: 22%;
   width: 154px;
   height: 64px;
-  background: rgba(244, 219, 202, 0.6);
+  background: rgba(36, 120, 137, 0.3);
   transform: rotate(26deg);
 }
 
@@ -259,7 +261,7 @@ html.js-enabled .hero {
   bottom: 13%;
   width: 112px;
   height: 48px;
-  background: rgba(217, 230, 205, 0.54);
+  background: rgba(255, 255, 255, 0.36);
   transform: rotate(-18deg);
 }
 
@@ -267,11 +269,12 @@ html.js-enabled .hero {
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 45svh 28px 56px;
+  padding: calc(54px + env(safe-area-inset-top)) 28px 0;
+  text-shadow: 0 1px 20px rgba(255, 255, 255, 0.75);
 }
 
 .hero .eyebrow {
-  color: rgba(255, 245, 238, 0.86);
+  color: var(--leaf);
 }
 
 .couple-names {
@@ -286,20 +289,20 @@ html.js-enabled .hero {
 }
 
 .name-divider {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(23, 36, 45, 0.58);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 0.75rem;
 }
 
 .hero-date {
   margin-top: 14px;
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(23, 36, 45, 0.74);
   font-size: 0.94rem;
 }
 
 .intro-section {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 252, 248, 0.95)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(242, 249, 252, 0.96)),
     var(--paper);
 }
 
@@ -318,16 +321,16 @@ html.js-enabled .hero {
 blockquote {
   margin: 34px 0 0;
   padding: 24px 20px;
-  color: var(--rose-deep);
-  background: #fbf3ef;
-  border: 1px solid #efe0d7;
+  color: #255867;
+  background: #eef8fb;
+  border: 1px solid #d4e8ef;
   border-radius: 8px;
   font-size: 1.2rem;
   line-height: 1.62;
 }
 
 .couple-section {
-  background: #fffaf6;
+  background: #f8fbfd;
 }
 
 .couple-grid {
@@ -339,7 +342,7 @@ blockquote {
 
 .profile {
   padding: 24px 18px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--line);
   border-radius: 8px;
 }
@@ -349,8 +352,8 @@ blockquote {
   place-items: center;
   min-width: 54px;
   min-height: 28px;
-  color: var(--rose-deep);
-  background: #f7e7e2;
+  color: var(--leaf);
+  background: #e4f3f7;
   border-radius: 999px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -373,8 +376,8 @@ blockquote {
 
 .date-section {
   background:
-    radial-gradient(circle at 50% 0%, rgba(180, 150, 103, 0.16), transparent 18rem),
-    #fcf8f2;
+    radial-gradient(circle at 50% 0%, rgba(36, 120, 137, 0.16), transparent 18rem),
+    #f4fafc;
 }
 
 .countdown {
@@ -394,7 +397,7 @@ blockquote {
 
 .countdown strong {
   display: block;
-  color: var(--rose-deep);
+  color: var(--leaf);
   font-family: "Gowun Batang", serif;
   font-size: 2rem;
   line-height: 1;
@@ -437,14 +440,14 @@ blockquote {
 
 .button.primary {
   color: #fff;
-  background: var(--rose-deep);
-  border-color: var(--rose-deep);
+  background: #1f6f81;
+  border-color: #1f6f81;
 }
 
 .button.secondary {
-  color: var(--rose-deep);
+  color: #1f6f81;
   background: transparent;
-  border-color: #dfc6bd;
+  border-color: #bcdbe3;
 }
 
 .venue-section {
@@ -474,7 +477,7 @@ address {
 
 .venue-notes p {
   padding: 14px 16px;
-  background: #fbf6f1;
+  background: #f1f8fb;
   border: 1px solid var(--line);
   border-radius: 8px;
 }
@@ -489,7 +492,7 @@ address {
 }
 
 .gallery-section {
-  background: #fffaf6;
+  background: #f7fbfc;
 }
 
 .gallery-grid {
@@ -525,8 +528,8 @@ address {
   padding: 16px;
   color: rgba(85, 71, 66, 0.64);
   background:
-    linear-gradient(135deg, rgba(189, 126, 122, 0.23), rgba(113, 128, 102, 0.2)),
-    #f5ebe4;
+    linear-gradient(135deg, rgba(36, 120, 137, 0.18), rgba(225, 123, 134, 0.16)),
+    #edf7fa;
   font-family: "Gowun Batang", serif;
   text-align: center;
 }
@@ -548,7 +551,7 @@ address {
   gap: 10px 14px;
   align-items: center;
   padding: 18px;
-  background: #fbf6f1;
+  background: #f2f8fb;
   border: 1px solid var(--line);
   border-radius: 8px;
 }
@@ -567,7 +570,7 @@ address {
 .copy-account {
   min-height: 38px;
   padding-inline: 14px;
-  color: var(--rose-deep);
+  color: #1f6f81;
   background: #fff;
   border: 1px solid #e5d5cc;
   border-radius: 999px;
@@ -578,8 +581,8 @@ address {
 .share-section {
   padding-bottom: 86px;
   background:
-    linear-gradient(180deg, rgba(255, 250, 246, 0.92), rgba(246, 233, 225, 0.96)),
-    #f8eee9;
+    linear-gradient(180deg, rgba(247, 251, 252, 0.94), rgba(239, 246, 247, 0.96)),
+    #eef6f8;
 }
 
 .toast {
@@ -604,16 +607,16 @@ address {
   width: 9px;
   height: 9px;
   padding: 0;
-  border: 1px solid rgba(144, 88, 83, 0.42);
+  border: 1px solid rgba(31, 111, 129, 0.45);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.78);
   cursor: pointer;
 }
 
 .page-dots button.is-active {
   height: 24px;
-  background: var(--rose-deep);
-  border-color: var(--rose-deep);
+  background: #1f6f81;
+  border-color: #1f6f81;
 }
 
 @media (min-width: 481px) {

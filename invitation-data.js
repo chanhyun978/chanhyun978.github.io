@@ -62,7 +62,7 @@ window.INVITATION_DATA = {
     },
   ],
   cover: {
-    src: "assets/cover.jpg",
+    src: "assets/main.jpg",
     alt: "모바일 청첩장 커버 이미지",
   },
   accounts: [

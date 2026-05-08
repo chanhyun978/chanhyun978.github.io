@@ -10,8 +10,8 @@
   --gold: #b9905d;
   --shadow: 0 24px 72px rgba(21, 45, 58, 0.2);
   --app-height: 100vh;
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
-  --font-display: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
+  --font-sans: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --font-display: "Gowun Batang", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", serif;
 }
 
 @supports (height: 100dvh) {

@@ -212,7 +212,7 @@ html.js-enabled .hero {
   position: absolute;
   z-index: 1;
   inset: 0 0 auto;
-  height: 34%;
+  height: 38%;
   background: linear-gradient(
     180deg,
     rgba(236, 249, 254, 0.58),

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="2026년 10월 31일 KU컨벤션웨딩홀에서 열리는 결혼식 모바일 청첩장입니다."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="모바일 청첩장" />
+    <meta
+      property="og:description"
+      content="소중한 날, 함께 축복해 주세요."
+    />
+    <title>모바일 청첩장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="invitation" class="page-shell">
+      <section class="hero section" aria-labelledby="hero-title">
+        <div class="hero-media" data-cover>
+          <div class="image-fallback" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+        <div class="hero-content">
+          <p class="eyebrow" data-hero-eyebrow></p>
+          <h1 id="hero-title" data-hero-title></h1>
+          <p class="couple-names">
+            <span data-groom-name></span>
+            <span class="name-divider" aria-hidden="true">그리고</span>
+            <span data-bride-name></span>
+          </p>
+          <p class="hero-date" data-date-display></p>
+        </div>
+      </section>
+
+      <section class="section intro-section" aria-labelledby="greeting-title">
+        <p class="section-kicker">Invitation</p>
+        <h2 id="greeting-title">소중한 분들을 초대합니다</h2>
+        <p class="greeting" data-greeting></p>
+        <blockquote data-quote></blockquote>
+      </section>
+
+      <section class="section couple-section" aria-labelledby="couple-title">
+        <p class="section-kicker">Bride & Groom</p>
+        <h2 id="couple-title">두 사람</h2>
+        <p class="parents-intro" data-parents-intro></p>
+        <div class="couple-grid">
+          <article class="profile">
+            <span class="profile-label">신랑</span>
+            <h3 data-groom-full-name></h3>
+            <p data-groom-parents></p>
+            <a class="text-link" data-groom-phone href="#">연락하기</a>
+          </article>
+          <article class="profile">
+            <span class="profile-label">신부</span>
+            <h3 data-bride-full-name></h3>
+            <p data-bride-parents></p>
+            <a class="text-link" data-bride-phone href="#">연락하기</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section date-section" aria-labelledby="date-title">
+        <p class="section-kicker">Wedding Day</p>
+        <h2 id="date-title" data-date-heading></h2>
+        <div class="countdown" aria-label="결혼식까지 남은 시간">
+          <div>
+            <strong data-days>0</strong>
+            <span>Days</span>
+          </div>
+          <div>
+            <strong data-hours>0</strong>
+            <span>Hours</span>
+          </div>
+          <div>
+            <strong data-minutes>0</strong>
+            <span>Minutes</span>
+          </div>
+        </div>
+        <p class="countdown-note" data-countdown-note></p>
+        <button class="button primary" type="button" data-calendar-button>
+          일정 복사하기
+        </button>
+      </section>
+
+      <section class="section venue-section" aria-labelledby="venue-title">
+        <p class="section-kicker">Location</p>
+        <h2 id="venue-title" data-venue-name></h2>
+        <address>
+          <span data-venue-address></span>
+          <span data-venue-floor></span>
+        </address>
+        <div class="venue-notes">
+          <p data-venue-transit></p>
+          <p data-venue-parking></p>
+          <p data-venue-capacity></p>
+          <p data-venue-screen></p>
+        </div>
+        <div class="map-actions" data-map-actions></div>
+      </section>
+
+      <section class="section gallery-section" aria-labelledby="gallery-title">
+        <p class="section-kicker">Gallery</p>
+        <h2 id="gallery-title">우리의 순간</h2>
+        <p data-gallery-intro></p>
+        <div class="gallery-grid" data-gallery></div>
+      </section>
+
+      <section class="section account-section" aria-labelledby="account-title">
+        <p class="section-kicker">With Heart</p>
+        <h2 id="account-title">마음 전하기</h2>
+        <p data-account-intro></p>
+        <div class="account-list" data-accounts></div>
+      </section>
+
+      <section class="section share-section" aria-labelledby="share-title">
+        <p class="section-kicker">Share</p>
+        <h2 id="share-title">초대장 공유하기</h2>
+        <div class="share-actions">
+          <button class="button primary" type="button" data-share-button>
+            공유하기
+          </button>
+          <button class="button secondary" type="button" data-copy-link-button>
+            링크 복사
+          </button>
+        </div>
+        <p class="toast" role="status" aria-live="polite" data-toast></p>
+      </section>
+    </main>
+
+    <script src="invitation-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

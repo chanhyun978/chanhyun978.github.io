@@ -432,6 +432,11 @@ blockquote {
     #f4fafc;
 }
 
+.date-heading {
+  white-space: nowrap;
+  font-size: clamp(1.08rem, 4.25vw, 1.62rem);
+}
+
 .countdown {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

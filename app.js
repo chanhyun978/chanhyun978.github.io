@@ -39,6 +39,7 @@ function imageWithFallback(src, alt, fallbackText, className) {
 function renderCover() {
   const cover = $("[data-cover]");
   if (!cover || !data.cover?.src) return;
+  if (cover.querySelector("img")) return;
 
   const image = document.createElement("img");
   image.src = data.cover.src;
@@ -311,10 +312,6 @@ function bindActions() {
 function setAppHeight() {
   const height = window.visualViewport?.height || window.innerHeight;
   document.documentElement.style.setProperty("--app-height", `${height}px`);
-  document.documentElement.style.setProperty(
-    "--browser-bottom-offset",
-    isKakaoBrowser ? "56px" : "0px",
-  );
 }
 
 function setupPager() {

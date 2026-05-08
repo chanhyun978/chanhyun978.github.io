@@ -3,22 +3,22 @@
 window.INVITATION_DATA = {
   couple: {
     groom: {
-      name: "김도윤",
-      fullName: "김도윤",
-      parents: "김민준 · 이서연의 장남",
-      phone: "010-0000-0000",
+      name: "이찬현",
+      fullName: "이찬현",
+      parents: "이명수 · 김지윤의 장남",
+      phone: "010-3823-9152",
     },
     bride: {
-      name: "한서아",
-      fullName: "한서아",
-      parents: "한지훈 · 박지은의 장녀",
-      phone: "010-0000-0000",
+      name: "김한비",
+      fullName: "김한비",
+      parents: "김영택 · 이시은의 장녀",
+      phone: "010-2171-9379",
     },
   },
   date: {
     iso: "2026-10-31T12:00:00+09:00",
     display: "2026년 10월 31일 토요일 낮 12시",
-    calendarTitle: "도윤 그리고 서아의 결혼식",
+    calendarTitle: "이찬현, 김한비의 결혼식",
   },
   venue: {
     name: "KU컨벤션웨딩홀",
@@ -68,13 +68,13 @@ window.INVITATION_DATA = {
   accounts: [
     {
       side: "신랑측",
-      holder: "김도윤",
+      holder: "이찬현",
       bank: "국민은행",
-      number: "000000-00-000000",
+      number: "089502-04-045253",
     },
     {
       side: "신부측",
-      holder: "한서아",
+      holder: "김한비",
       bank: "신한은행",
       number: "000-000-000000",
     },
@@ -88,7 +88,7 @@ window.INVITATION_DATA = {
       "https://www.google.com/maps/search/?api=1&query=KU%EC%BB%A8%EB%B2%A4%EC%85%98%EC%9B%A8%EB%94%A9%ED%99%80%20%EC%84%9C%EC%9A%B8%20%EA%B4%91%EC%A7%84%EA%B5%AC%20%EC%95%84%EC%B0%A8%EC%82%B0%EB%A1%9C36%EA%B8%B8%205",
   },
   share: {
-    title: "도윤 그리고 서아의 결혼식에 초대합니다",
+    title: "찬현 그리고 한비의 결혼식에 초대합니다",
     text: "2026년 10월 31일 토요일 낮 12시, KU컨벤션웨딩홀에서 함께 축복해 주세요.",
     url: "",
   },

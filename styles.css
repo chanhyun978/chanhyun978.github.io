@@ -9,7 +9,23 @@
   --leaf: #247889;
   --gold: #b9905d;
   --shadow: 0 24px 72px rgba(21, 45, 58, 0.2);
-  --app-height: 100svh;
+  --app-height: 100vh;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+  --font-display: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", system-ui, sans-serif;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --app-height: 100dvh;
+  }
+}
+
+@supports not (height: 100dvh) {
+  @supports (height: 100svh) {
+    :root {
+      --app-height: 100svh;
+    }
+  }
 }
 
 * {
@@ -29,7 +45,7 @@ body {
     radial-gradient(circle at 16% 0%, rgba(74, 170, 190, 0.24), transparent 28rem),
     radial-gradient(circle at 92% 18%, rgba(225, 123, 134, 0.18), transparent 22rem),
     linear-gradient(180deg, #e7f4f9 0%, var(--bg) 40%, #f7f2ec 100%);
-  font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.7;
 }
 
@@ -104,6 +120,13 @@ html.js-enabled .section.is-active {
   transform: translateY(0) scale(1);
 }
 
+html.js-enabled:not(.pager-ready) .section:first-of-type {
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
 html.js-enabled .section.is-before {
   transform: translateY(-22px) scale(0.985);
 }
@@ -127,7 +150,7 @@ html.js-enabled .section + .section::before {
 .eyebrow {
   margin: 0 0 14px;
   color: var(--leaf);
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -138,7 +161,7 @@ h1,
 h2,
 h3,
 blockquote {
-  font-family: "Gowun Batang", "Noto Sans KR", serif;
+  font-family: var(--font-display);
 }
 
 h1,
@@ -311,13 +334,13 @@ html.js-enabled .hero {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 24px;
-  font-family: "Gowun Batang", serif;
+  font-family: var(--font-display);
   font-size: 1.2rem;
 }
 
 .name-divider {
   color: rgba(23, 36, 45, 0.58);
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
 }
 
@@ -425,7 +448,7 @@ blockquote {
 .countdown strong {
   display: block;
   color: var(--leaf);
-  font-family: "Gowun Batang", serif;
+  font-family: var(--font-display);
   font-size: 2rem;
   line-height: 1;
 }
@@ -532,7 +555,7 @@ address {
 .guide-card h3 {
   margin: 0 0 10px;
   color: #1f6f81;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.92rem;
 }
 
@@ -632,7 +655,7 @@ address {
   background:
     linear-gradient(135deg, rgba(36, 120, 137, 0.18), rgba(225, 123, 134, 0.16)),
     #edf7fa;
-  font-family: "Gowun Batang", serif;
+  font-family: var(--font-display);
   text-align: center;
 }
 

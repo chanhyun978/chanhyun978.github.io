@@ -53,12 +53,12 @@
       href="assets/kakao-thumbnail-20260509.jpg"
     />
     <title>모바일 청첩장</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <script>
+      document.documentElement.classList.add("js-enabled");
+      if (/KAKAOTALK/i.test(navigator.userAgent)) {
+        document.documentElement.classList.add("kakao-browser");
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>

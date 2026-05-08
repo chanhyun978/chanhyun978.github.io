@@ -309,11 +309,6 @@ function bindActions() {
   });
 }
 
-function setAppHeight() {
-  const height = window.visualViewport?.height || window.innerHeight;
-  document.documentElement.style.setProperty("--app-height", `${height}px`);
-}
-
 function setupPager() {
   const shell = $(".page-shell");
   const sections = Array.from(document.querySelectorAll(".section"));
@@ -433,10 +428,10 @@ function setupPager() {
   });
 
   setActive(0);
+  document.documentElement.classList.add("pager-ready");
 }
 
 function init() {
-  setAppHeight();
   renderCover();
   renderBasics();
   renderCountdown();
@@ -451,11 +446,3 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", init);
-window.addEventListener("resize", setAppHeight);
-window.visualViewport?.addEventListener("resize", setAppHeight);
-window.addEventListener("load", () => {
-  setAppHeight();
-  window.setTimeout(setAppHeight, 350);
-  window.setTimeout(setAppHeight, 1200);
-});
-document.addEventListener("visibilitychange", setAppHeight);

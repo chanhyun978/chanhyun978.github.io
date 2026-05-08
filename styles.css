@@ -467,19 +467,75 @@ address {
   font-style: normal;
 }
 
-.venue-notes {
+.location-guide {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 24px;
+  text-align: left;
+}
+
+.guide-card {
+  padding: 16px 16px 15px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(21, 45, 58, 0.06);
+}
+
+.guide-card h3 {
+  margin: 0 0 10px;
+  color: #1f6f81;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.92rem;
+}
+
+.guide-card p,
+.guide-card li {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.58;
+}
+
+.guide-card ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guide-card li {
+  position: relative;
+  padding-left: 13px;
+}
+
+.guide-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 5px;
+  height: 5px;
+  background: var(--rose);
+  border-radius: 999px;
+}
+
+.venue-notes {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
   color: var(--muted);
   text-align: left;
 }
 
 .venue-notes p {
-  padding: 14px 16px;
-  background: #f1f8fb;
-  border: 1px solid var(--line);
+  padding: 12px 14px;
+  background: rgba(241, 248, 251, 0.72);
+  border: 1px dashed var(--line);
   border-radius: 8px;
+  font-size: 0.88rem;
+  line-height: 1.58;
 }
 
 .map-actions,

@@ -140,6 +140,52 @@ function renderMapLinks() {
   });
 }
 
+function appendList(parent, items) {
+  const list = document.createElement("ul");
+  items.filter(Boolean).forEach((item) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = item;
+    list.append(listItem);
+  });
+  parent.append(list);
+}
+
+function createGuideCard(title, items) {
+  const card = document.createElement("article");
+  card.className = "guide-card";
+
+  const heading = document.createElement("h3");
+  heading.textContent = title;
+  card.append(heading);
+
+  if (Array.isArray(items)) {
+    appendList(card, items);
+  } else if (items) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = items;
+    card.append(paragraph);
+  }
+
+  return card;
+}
+
+function renderLocationGuide() {
+  const container = $("[data-location-guide]");
+  if (!container || !data.venue) return;
+
+  container.append(
+    createGuideCard("내비게이션", data.venue.navigation || []),
+    createGuideCard("지하철", data.venue.subway || []),
+    createGuideCard("버스", [
+      data.venue.busStops,
+      ...(data.venue.buses || []).map(
+        (bus) => `${bus.label}: ${bus.routes}`,
+      ),
+    ]),
+    createGuideCard("주차", data.venue.parkingLots || []),
+  );
+}
+
 function renderGallery() {
   const container = $("[data-gallery]");
   if (!container) return;
@@ -381,6 +427,7 @@ function init() {
   renderBasics();
   renderCountdown();
   renderMapLinks();
+  renderLocationGuide();
   renderGallery();
   renderAccounts();
   bindActions();

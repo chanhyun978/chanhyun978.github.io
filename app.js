@@ -69,8 +69,6 @@ function renderBasics() {
   setText("[data-bride-parents]", data.couple?.bride?.parents);
   setText("[data-date-heading]", data.date?.display);
   setText("[data-venue-name]", data.venue?.name);
-  setText("[data-venue-address]", data.venue?.address);
-  setText("[data-venue-floor]", data.venue?.floor);
   setText("[data-venue-transit]", data.venue?.transit);
   setText("[data-venue-parking]", data.venue?.parking);
   setText("[data-venue-capacity]", data.venue?.capacity);
@@ -138,6 +136,19 @@ function renderMapLinks() {
     link.textContent = labels[key] || "지도 보기";
     container.append(link);
   });
+}
+
+function renderVenueMap() {
+  const container = $("[data-venue-map]");
+  const mapImage = data.venue?.mapImage;
+  if (container?.querySelector("img")) return;
+  if (!container || !mapImage?.src) return;
+
+  const image = document.createElement("img");
+  image.src = mapImage.src;
+  image.alt = mapImage.alt || "오시는 길 약도";
+  image.loading = "eager";
+  container.append(image);
 }
 
 function appendList(parent, items) {
@@ -427,6 +438,7 @@ function init() {
   renderBasics();
   renderCountdown();
   renderMapLinks();
+  renderVenueMap();
   renderLocationGuide();
   renderGallery();
   renderAccounts();

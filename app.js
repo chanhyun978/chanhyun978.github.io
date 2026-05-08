@@ -119,6 +119,15 @@ function renderCountdown() {
   if (note) note.textContent = `예식까지 ${remainingDays}일 남았습니다.`;
 }
 
+function startCountdownTimer() {
+  renderCountdown();
+  const msToNextMinute = 60000 - (Date.now() % 60000);
+  window.setTimeout(() => {
+    renderCountdown();
+    window.setInterval(renderCountdown, 60000);
+  }, msToNextMinute);
+}
+
 function renderMapLinks() {
   const container = $("[data-map-actions]");
   if (!container) return;
@@ -442,7 +451,7 @@ function init() {
   renderAccounts();
   bindActions();
   setupPager();
-  window.setInterval(renderCountdown, 60000);
+  startCountdownTimer();
 }
 
 document.addEventListener("DOMContentLoaded", init);

@@ -62,7 +62,7 @@ window.INVITATION_DATA = {
       "학생때부터 직장까지 함께하며 서로의 버팀목이 되어준 두 사람이 이제 한 길을 함께 걸어가려 합니다. 귀한 걸음으로 축복해 주시면 더없는 기쁨으로 간직하겠습니다.",
     quote: "같은 곳을 바라보며, 매일을 따뜻하게 쌓아가겠습니다.",
     parentsIntro: "양가 부모님께서 소중한 분들을 정중히 초대합니다.",
-    accountIntro: "축하의 마음을 전해주실 분들을 위해 계좌번호를 안내드립니다.",
+    accountIntro: "마음을 전하실 분을 선택해 계좌번호를 복사해 주세요.",
     galleryIntro: "함께한 순간들을 이곳에 담았습니다.",
   },
   gallery: [
@@ -87,18 +87,56 @@ window.INVITATION_DATA = {
     src: "assets/main.jpg",
     alt: "모바일 청첩장 커버 이미지",
   },
+  // 부모님 계좌는 bank와 number를 입력하면 화면에 표시됩니다.
+  // bank와 number가 비어 있는 항목은 청첩장에 노출되지 않습니다.
   accounts: [
     {
       side: "신랑측",
-      holder: "이찬현",
-      bank: "국민은행",
-      number: "089502-04-045253",
+      note: "신랑 또는 부모님께 마음을 전하실 수 있습니다.",
+      people: [
+        {
+          relation: "신랑",
+          holder: "이찬현",
+          bank: "국민은행",
+          number: "089502-04-045253",
+        },
+        {
+          relation: "아버지",
+          holder: "이명수",
+          bank: "",
+          number: "",
+        },
+        {
+          relation: "어머니",
+          holder: "김지윤",
+          bank: "",
+          number: "",
+        },
+      ],
     },
     {
       side: "신부측",
-      holder: "김한비",
-      bank: "새마을금고",
-      number: "9003-2860-2155-9",
+      note: "신부 또는 부모님께 마음을 전하실 수 있습니다.",
+      people: [
+        {
+          relation: "신부",
+          holder: "김한비",
+          bank: "새마을금고",
+          number: "9003-2860-2155-9",
+        },
+        {
+          relation: "아버지",
+          holder: "김영택",
+          bank: "",
+          number: "",
+        },
+        {
+          relation: "어머니",
+          holder: "이시은",
+          bank: "",
+          number: "",
+        },
+      ],
     },
   ],
   mapLinks: {
@@ -112,6 +150,6 @@ window.INVITATION_DATA = {
   share: {
     title: "이찬현 그리고 김한비의 결혼식에 초대합니다",
     text: "2026년 10월 31일 토요일 낮 12시, KU컨벤션웨딩홀에서 함께 축복해 주세요.",
-    url: "",
+    url: "https://chanhyun-hanbi.pages.dev/",
   },
 };

@@ -226,29 +226,124 @@ function renderGallery() {
   });
 }
 
+function normalizeAccountEntry(account) {
+  return {
+    relation: account.relation || "",
+    holder: account.holder || "",
+    bank: account.bank || "",
+    number: account.number || "",
+  };
+}
+
+function hasVisibleAccount(account) {
+  return Boolean(account.bank && account.number);
+}
+
+function normalizeAccountGroups(accounts) {
+  if (!Array.isArray(accounts)) return [];
+
+  return accounts.reduce((groups, account) => {
+    if (!account) return groups;
+
+    const nestedAccounts = account.people || account.members || account.accounts;
+    if (Array.isArray(nestedAccounts)) {
+      groups.push({
+        side: account.side || "계좌",
+        note: account.note || "",
+        entries: nestedAccounts.map(normalizeAccountEntry),
+      });
+      return groups;
+    }
+
+    const side = account.side || "계좌";
+    let group = groups.find((item) => item.side === side && item.isFlatGroup);
+    if (!group) {
+      group = { side, note: "", entries: [], isFlatGroup: true };
+      groups.push(group);
+    }
+    group.entries.push(normalizeAccountEntry(account));
+    return groups;
+  }, []);
+}
+
 function renderAccounts() {
   const container = $("[data-accounts]");
   if (!container) return;
 
-  (data.accounts || []).forEach((account) => {
+  normalizeAccountGroups(data.accounts).forEach((group) => {
+    const entries = group.entries.filter(hasVisibleAccount);
+    if (entries.length === 0) return;
+
     const card = document.createElement("article");
-    card.className = "account-card";
+    card.className = "account-group";
+
+    const header = document.createElement("div");
+    header.className = "account-group-header";
+
+    const titleWrap = document.createElement("div");
+    titleWrap.className = "account-group-title";
+
+    const side = document.createElement("span");
+    side.className = "account-side";
+    side.textContent = group.side;
 
     const title = document.createElement("h3");
-    title.textContent = `${account.side || ""} ${account.holder || ""}`.trim();
+    title.textContent = "축하의 마음";
 
-    const button = document.createElement("button");
-    button.className = "copy-account";
-    button.type = "button";
-    button.textContent = "복사";
-    button.addEventListener("click", () => {
-      copyText(`${account.bank || ""} ${account.number || ""}`.trim());
+    titleWrap.append(side, title);
+    header.append(titleWrap);
+
+    if (group.note) {
+      const note = document.createElement("p");
+      note.textContent = group.note;
+      header.append(note);
+    }
+
+    const list = document.createElement("div");
+    list.className = "account-entries";
+
+    entries.forEach((account) => {
+      const row = document.createElement("div");
+      row.className = "account-row";
+
+      const detail = document.createElement("div");
+      detail.className = "account-detail";
+
+      const person = document.createElement("div");
+      person.className = "account-person";
+
+      if (account.relation) {
+        const relation = document.createElement("span");
+        relation.className = "account-relation";
+        relation.textContent = account.relation;
+        person.append(relation);
+      }
+
+      const holder = document.createElement("strong");
+      holder.textContent = account.holder || "예금주";
+      person.append(holder);
+
+      const bank = document.createElement("p");
+      bank.textContent = `${account.bank || ""} ${account.number || ""}`.trim();
+
+      const button = document.createElement("button");
+      button.className = "copy-account";
+      button.type = "button";
+      button.textContent = "복사";
+      button.setAttribute(
+        "aria-label",
+        `${account.holder || "계좌"} 계좌번호 복사`,
+      );
+      button.addEventListener("click", () => {
+        copyText(`${account.bank || ""} ${account.number || ""}`.trim());
+      });
+
+      detail.append(person, bank);
+      row.append(detail, button);
+      list.append(row);
     });
 
-    const detail = document.createElement("p");
-    detail.textContent = `${account.bank || ""} ${account.number || ""}`.trim();
-
-    card.append(title, button, detail);
+    card.append(header, list);
     container.append(card);
   });
 }

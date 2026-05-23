@@ -672,31 +672,109 @@ address {
 
 .account-list {
   display: grid;
-  gap: 12px;
-  margin-top: 28px;
+  gap: 16px;
+  margin-top: 26px;
   text-align: left;
 }
 
-.account-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 14px;
-  align-items: center;
-  padding: 18px;
-  background: #f2f8fb;
+.account-group {
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.82);
   border: 1px solid var(--line);
   border-radius: 8px;
+  box-shadow: 0 16px 42px rgba(21, 45, 58, 0.08);
 }
 
-.account-card h3 {
+.account-group-header {
+  display: grid;
+  gap: 8px;
+  padding: 18px 18px 15px;
+  background:
+    linear-gradient(135deg, rgba(36, 120, 137, 0.1), rgba(225, 123, 134, 0.09)),
+    #f6fbfd;
+  border-bottom: 1px solid var(--line);
+}
+
+.account-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.account-side {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 12px;
+  color: #fff;
+  background: #1f6f81;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.account-group h3 {
   margin: 0;
   font-size: 1.08rem;
 }
 
-.account-card p {
-  grid-column: 1 / -1;
+.account-group-header p {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.account-entries {
+  display: grid;
+}
+
+.account-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 15px 16px;
+}
+
+.account-row + .account-row {
+  border-top: 1px solid rgba(216, 230, 236, 0.78);
+}
+
+.account-detail {
+  min-width: 0;
+}
+
+.account-person {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.account-person strong {
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.account-relation {
+  flex: 0 0 auto;
+  padding: 3px 8px;
+  color: var(--leaf);
+  background: #e4f3f7;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.account-detail p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  word-break: break-all;
 }
 
 .copy-account {
@@ -778,8 +856,12 @@ address {
     width: 100%;
   }
 
-  .account-card {
+  .account-row {
     grid-template-columns: 1fr;
+  }
+
+  .copy-account {
+    width: 100%;
   }
 
   .page-dots {

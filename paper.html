@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="이찬현 김한비 종이 청첩장 PDF 변환용 시안입니다."
+    />
+    <title>종이 청첩장 시안</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=block"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="paper-styles.css" />
+  </head>
+  <body>
+    <header class="screen-toolbar" aria-label="종이 청첩장 도구">
+      <div>
+        <strong>종이 청첩장 시안</strong>
+        <span>인쇄 또는 PDF 저장 시 A5 세로, 배경 그래픽 포함을 선택해 주세요.</span>
+      </div>
+      <button type="button" data-print-button>PDF로 저장</button>
+    </header>
+
+    <main class="paper-preview" aria-label="종이 청첩장 6가지 시안">
+      <section class="paper-card version-classic" aria-labelledby="classic-title">
+        <div class="paper-inner">
+          <p class="paper-kicker">Wedding Invitation</p>
+          <h1 id="classic-title" data-paper-title></h1>
+          <p class="paper-names">
+            <span data-groom-name></span>
+            <span class="paper-divider">그리고</span>
+            <span data-bride-name></span>
+          </p>
+          <p class="paper-quote" data-quote></p>
+          <p class="paper-message" data-greeting></p>
+          <div class="paper-details">
+            <p data-date-display></p>
+            <p>
+              <strong data-venue-name></strong>
+              <span data-venue-floor></span>
+            </p>
+            <p data-venue-address></p>
+          </div>
+          <div class="paper-parents">
+            <p>
+              <span data-groom-parents></span>
+              <strong data-groom-full-name></strong>
+            </p>
+            <p>
+              <span data-bride-parents></span>
+              <strong data-bride-full-name></strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="paper-card version-photo" aria-labelledby="photo-title">
+        <figure class="paper-photo" data-cover-photo></figure>
+        <div class="paper-photo-copy">
+          <p class="paper-kicker">Wedding Invitation</p>
+          <h1 id="photo-title">저희 결혼합니다</h1>
+          <p class="paper-names">
+            <span data-groom-name></span>
+            <span class="paper-divider">with</span>
+            <span data-bride-name></span>
+          </p>
+          <p class="paper-date-line" data-date-display></p>
+        </div>
+        <div class="paper-photo-footer">
+          <p data-greeting></p>
+          <div>
+            <strong data-venue-name></strong>
+            <span data-venue-address></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="paper-card version-editorial" aria-labelledby="editorial-title">
+        <div class="editorial-band">
+          <p data-editorial-month-day></p>
+          <span data-editorial-time></span>
+        </div>
+        <div class="editorial-content">
+          <p class="paper-kicker">Our Wedding Day</p>
+          <h1 id="editorial-title">
+            <span data-groom-name></span>
+            <small>&</small>
+            <span data-bride-name></span>
+          </h1>
+          <p class="paper-message" data-greeting></p>
+          <dl class="editorial-info">
+            <div>
+              <dt>일시</dt>
+              <dd data-date-display></dd>
+            </div>
+            <div>
+              <dt>장소</dt>
+              <dd>
+                <strong data-venue-name></strong>
+                <span data-venue-floor></span>
+              </dd>
+            </div>
+            <div>
+              <dt>주소</dt>
+              <dd data-venue-address></dd>
+            </div>
+          </dl>
+          <p class="paper-link" data-share-url></p>
+        </div>
+      </section>
+
+      <section class="paper-card version-minimal" aria-labelledby="minimal-title">
+        <div class="minimal-date">
+          <span data-date-year></span>
+          <strong data-date-month-day></strong>
+        </div>
+        <div class="minimal-content">
+          <p class="paper-kicker">Invitation</p>
+          <h1 id="minimal-title">
+            <span data-groom-name></span>
+            <small>and</small>
+            <span data-bride-name></span>
+          </h1>
+          <p class="minimal-statement" data-quote></p>
+          <dl class="minimal-info">
+            <div>
+              <dt>Date</dt>
+              <dd data-date-display></dd>
+            </div>
+            <div>
+              <dt>Place</dt>
+              <dd>
+                <strong data-venue-name></strong>
+                <span data-venue-floor></span>
+              </dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd data-venue-address></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="paper-card version-vellum" aria-labelledby="vellum-title">
+        <figure class="vellum-arch" data-cover-photo></figure>
+        <div class="vellum-panel">
+          <p class="paper-kicker">Wedding Invitation</p>
+          <h1 id="vellum-title" data-paper-title></h1>
+          <p class="paper-names">
+            <span data-groom-given></span>
+            <span class="paper-divider">·</span>
+            <span data-bride-given></span>
+          </p>
+          <p class="paper-message" data-greeting></p>
+          <div class="paper-details">
+            <p data-date-display></p>
+            <p>
+              <strong data-venue-name></strong>
+              <span data-venue-address></span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="paper-card version-luxe" aria-labelledby="luxe-title">
+        <div class="luxe-mark" data-couple-mark></div>
+        <div class="luxe-content">
+          <p class="paper-kicker">Wedding Invitation</p>
+          <h1 id="luxe-title">
+            <span data-groom-given></span>
+            <small>&</small>
+            <span data-bride-given></span>
+          </h1>
+          <p class="paper-message" data-greeting></p>
+          <div class="luxe-details">
+            <p data-date-display></p>
+            <p>
+              <strong data-venue-name></strong>
+              <span data-venue-floor></span>
+            </p>
+            <p data-venue-address></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="invitation-data.js"></script>
+    <script src="paper.js"></script>
+  </body>
+</html>

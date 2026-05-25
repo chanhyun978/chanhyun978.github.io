@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="잡지 화보형 양면 종이 청첩장 PDF 변환용 페이지입니다."
+    />
+    <title>잡지 화보형 양면 청첩장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&display=block"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="paper-magazine.css" />
+  </head>
+  <body>
+    <header class="screen-toolbar" aria-label="잡지형 청첩장 도구">
+      <div>
+        <strong>잡지 화보형 양면 청첩장</strong>
+        <span>PDF 저장 시 A5, 세로, 배경 그래픽 포함을 선택해 주세요.</span>
+      </div>
+      <button type="button" data-print-button>PDF로 저장</button>
+    </header>
+
+    <main class="magazine-preview" aria-label="잡지 화보형 양면 청첩장">
+      <section class="sheet cover-side" aria-label="앞면">
+        <figure class="cover-photo" data-cover-photo></figure>
+        <div class="cover-shade"></div>
+        <div class="cover-topline">
+          <span>Wedding Issue</span>
+          <span data-date-month-day></span>
+        </div>
+        <div class="cover-title">
+          <p>THE WEDDING</p>
+          <h1>
+            <span data-groom-given></span>
+            <small>&</small>
+            <span data-bride-given></span>
+          </h1>
+        </div>
+        <div class="cover-copy">
+          <p data-quote></p>
+          <strong data-date-display></strong>
+          <span data-venue-name></span>
+        </div>
+      </section>
+
+      <section class="sheet info-side" aria-label="뒷면">
+        <div class="info-header">
+          <p>Invitation Details</p>
+          <h2>
+            <span data-groom-name></span>
+            <small>그리고</small>
+            <span data-bride-name></span>
+          </h2>
+        </div>
+
+        <div class="info-grid">
+          <section class="info-block main-message" aria-label="초대 문구">
+            <h3>초대합니다</h3>
+            <p data-greeting></p>
+          </section>
+
+          <section class="info-block event-block" aria-label="예식 정보">
+            <h3>Wedding Day</h3>
+            <dl>
+              <div>
+                <dt>일시</dt>
+                <dd data-date-display></dd>
+              </div>
+              <div>
+                <dt>장소</dt>
+                <dd>
+                  <strong data-venue-name></strong>
+                  <span data-venue-floor></span>
+                </dd>
+              </div>
+              <div>
+                <dt>주소</dt>
+                <dd data-venue-address></dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="qr-block" aria-label="모바일 청첩장 QR">
+            <img src="assets/site-qr.svg" alt="모바일 청첩장 QR 코드" />
+            <div>
+              <strong>모바일 청첩장</strong>
+              <span data-share-url></span>
+            </div>
+          </section>
+
+          <section class="info-block account-block" aria-label="마음 전하실 곳">
+            <h3>마음 전하실 곳</h3>
+            <div class="account-groups" data-accounts></div>
+          </section>
+        </div>
+
+        <p class="info-footer">
+          귀한 걸음으로 함께해 주시는 마음을 오래 간직하겠습니다.
+        </p>
+      </section>
+    </main>
+
+    <script src="invitation-data.js"></script>
+    <script src="paper-magazine.js"></script>
+  </body>
+</html>

@@ -287,10 +287,7 @@ function renderAccounts() {
     side.className = "account-side";
     side.textContent = group.side;
 
-    const title = document.createElement("h3");
-    title.textContent = "축하의 마음";
-
-    titleWrap.append(side, title);
+    titleWrap.append(side);
     header.append(titleWrap);
 
     if (group.note) {

@@ -87,7 +87,7 @@ window.INVITATION_DATA = {
     src: "assets/main.jpg",
     alt: "모바일 청첩장 커버 이미지",
   },
-  // 부모님 계좌는 bank와 number를 입력하면 화면에 표시됩니다.
+  // 양가 부모님 계좌는 아래 부모님 항목의 bank와 number를 입력하면 화면에 표시됩니다.
   // bank와 number가 비어 있는 항목은 청첩장에 노출되지 않습니다.
   accounts: [
     {

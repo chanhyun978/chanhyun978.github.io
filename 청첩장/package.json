@@ -1,0 +1,9 @@
+{
+  "name": "paper-wedding-invitation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "export:pdf": "node tools/export-pdf.mjs"
+  }
+}
